@@ -334,25 +334,21 @@ export default {
             return;
           }
 
-          if (interaction.customId === 'verify_update_roles' || interaction.customId === 'verify_user') {
-      const getVerifiedEmbed = {
-        description: "👋 You must be new! You need to link Roblox account to your Discord account to continue.",
-        color: 0xF1C40F
-      };
-
+    if (interaction.customId === 'verify_update_roles' || interaction.customId === 'verify_user') {
       const linkButton = new ActionRowBuilder().addComponents(
         new ButtonBuilder()
-          .setLabel("Get Verified")
-          .setURL("https://verify-rover.cz/verify/?guild=8858055082054886")
+          .setLabel("Verify with Bloxlink")
+          .setURL("https://blox.link/dashboard/user/verifications")
           .setStyle(ButtonStyle.Link)
       );
 
       return await interaction.reply({
-        embeds: [getVerifiedEmbed],
+        content: "To verify with Bloxlink, click the link below.",
         components: [linkButton],
         flags: MessageFlags.Ephemeral
       });
-    }const [customId, ...args] = interaction.customId.split(':');
+    }
+    const [customId, ...args] = interaction.customId.split(':');
           const button = client.buttons.get(customId);
 
           if (!button) {
